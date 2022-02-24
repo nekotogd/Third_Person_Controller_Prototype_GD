@@ -68,9 +68,6 @@ func _physics_process(delta):
 	#basic movement script, speaks for itself.
 	var rot = $camBase/camRot.global_transform.basis.get_euler().y
 	
-	# get root_motion for character
-	root_motion = anim_tree.get_root_motion_transform()
-	
 	if Input.is_action_pressed("move_forward") ||  Input.is_action_pressed("move_backward") ||  Input.is_action_pressed("move_left") ||  Input.is_action_pressed("move_right"):
 	
 		direction = Vector3(Input.get_action_strength("move_left") - Input.get_action_strength("move_right"), 0,
@@ -87,7 +84,7 @@ func _physics_process(delta):
 				
 	else:
 		movement_speed = 0
-		anim_tree.set("parameters/iwr_blend/blend_amount", lerp(anim_tree.get("parameters/iwr_blend/blend_amount"), -1, delta * acceleration))
+		anim_tree.set("parameters/iwr_blend/blend_amount", lerp(anim_tree.get("parameters/iwr_blend/blend_amount"), -1, delta * 9))
 		
 	velocity = lerp(velocity, direction * movement_speed, delta * acceleration)
 
@@ -121,6 +118,9 @@ func _physics_process(delta):
 		
 	#combat ground code
 		if current_weapon == 1:
+			# get root_motion for character
+			root_motion = anim_tree.get_root_motion_transform()
+			
 			if Input.is_action_just_pressed("attack"):
 				anim_tree.set("parameters/hit1/active", true)
 					
