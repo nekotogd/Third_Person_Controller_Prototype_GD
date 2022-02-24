@@ -13,7 +13,6 @@ var vertical_velocity = 0
 var gravity = 26.34
 var weight_on_ground = 8
 
-var orientation = Transform()
 var root_motion = Transform()
 var root_vel = Vector3.ZERO
 
@@ -66,8 +65,11 @@ func _ready():
 		running = Input.is_action_pressed("walk_toggle")
 
 func _physics_process(delta):
-	#basic movement script, speaks for itself.	
+	#basic movement script, speaks for itself.
 	var rot = $camBase/camRot.global_transform.basis.get_euler().y
+	
+	# get root_motion for character
+	root_motion = anim_tree.get_root_motion_transform()
 	
 	if Input.is_action_pressed("move_forward") ||  Input.is_action_pressed("move_backward") ||  Input.is_action_pressed("move_left") ||  Input.is_action_pressed("move_right"):
 	
@@ -119,12 +121,8 @@ func _physics_process(delta):
 		
 	#combat ground code
 		if current_weapon == 1:
-			# get root_motion for attack
-			root_motion = anim_tree.get_root_motion_transform()
-			
 			if Input.is_action_just_pressed("attack"):
 				anim_tree.set("parameters/hit1/active", true)
-				
 					
 		if current_weapon == 0:
 			anim_tree.set("parameters/idle_states/blend_amount", 0)
@@ -165,7 +163,6 @@ func _physics_process(delta):
 # Check current weapon
 	check_weapon_states(delta)
 
-
 func root_motion_velocity(delta):
 	
 	### Root Motion Rotation ###
@@ -174,14 +171,12 @@ func root_motion_velocity(delta):
 	
 	position_matrix *= root_motion
 	
-	
 	### Root Motion Translation ###
 	var root_motion_displ = position_matrix.origin / delta
 	
 	root_vel.x = root_motion_displ.x
 	root_vel.z = root_motion_displ.z
 	root_vel.y = 0.0
-	
 	
 	return root_vel
 
