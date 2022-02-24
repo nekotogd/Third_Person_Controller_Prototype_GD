@@ -649,6 +649,7 @@ material/25 = null
 material/26 = null
 
 [node name="StaticBody" type="StaticBody" parent="mesh/Terrain Test Map"]
+collision_layer = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="mesh/Terrain Test Map/StaticBody"]
 shape = SubResource( 29 )
@@ -670,6 +671,7 @@ cull_mask = 1048575
 
 [node name="RigidBody" type="RigidBody" parent="props"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.88649, 14.9044, 13.8365 )
+collision_layer = 3
 physics_material_override = SubResource( 34 )
 continuous_cd = true
 
@@ -686,4 +688,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6625, 0, -5.3873 )
 [node name="ost" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
 volume_db = -10.0
-autoplay = true
