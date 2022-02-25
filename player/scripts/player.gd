@@ -11,7 +11,7 @@ var velocity = Vector3.ZERO
 #velocities
 var vertical_velocity = 0
 var gravity = 26.34
-var weight_on_ground = 8
+var weight_on_ground = 9
 
 var root_motion = Transform()
 var root_vel = Vector3.ZERO
@@ -68,6 +68,9 @@ func _physics_process(delta):
 	#basic movement script, speaks for itself.
 	var rot = $camBase/camRot.global_transform.basis.get_euler().y
 	
+	# get root_motion for character
+	root_motion = anim_tree.get_root_motion_transform()
+	
 	if Input.is_action_pressed("move_forward") ||  Input.is_action_pressed("move_backward") ||  Input.is_action_pressed("move_left") ||  Input.is_action_pressed("move_right"):
 	
 		direction = Vector3(Input.get_action_strength("move_left") - Input.get_action_strength("move_right"), 0,
@@ -105,7 +108,7 @@ func _physics_process(delta):
 			
 	#player is on the ground
 	else:
-		if vertical_velocity < -10:
+		if vertical_velocity < -7:
 			if floor_just == false:
 				$AnimationTree.set("parameters/land/active",true)
 				floor_just = true
@@ -118,11 +121,11 @@ func _physics_process(delta):
 		
 	#combat ground code
 		if current_weapon == 1:
-			# get root_motion for character
-			root_motion = anim_tree.get_root_motion_transform()
-			
 			if Input.is_action_just_pressed("attack"):
 				anim_tree.set("parameters/hit1/active", true)
+				
+			if Input.is_action_just_pressed("block"):
+				anim_tree.set("parameters/block/active", true)
 					
 		if current_weapon == 0:
 			anim_tree.set("parameters/idle_states/blend_amount", 0)
@@ -132,11 +135,11 @@ func _physics_process(delta):
 				if current_weapon == 0:
 					!anim_tree.set("parameters/draw_kb/active", true)
 					current_weapon = 1
-					$model/P_EX100outao/Skeleton/BoneAttachment/kingdom_key.visible = true
+					$model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key.visible = true
 				else:
 					!anim_tree.set("parameters/sheathe_kb/active", true)
 					current_weapon = 0
-					$model/P_EX100outao/Skeleton/BoneAttachment/kingdom_key.visible = false
+					$model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key.visible = false
 		
 	#run/sprint blending
 	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(direction.x, direction.z) - rotation.y, delta * angular_acceleration)

@@ -1,0 +1,8 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://player/model/texture003.png" type="Texture" id=1]
+
+[resource]
+params_diffuse_mode = 2
+params_specular_mode = 3
+albedo_texture = ExtResource( 1 )
