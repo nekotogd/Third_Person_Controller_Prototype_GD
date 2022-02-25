@@ -9,3 +9,5 @@ It can however be used as a base for myself and others to make their own third p
 
 
 Kingdom Hearts: ©Disney. The SQUARESOFT logo is a registered trademark of Square Co., Ltd.
+
+Discord server: discord.gg/snnCQSmJcr
