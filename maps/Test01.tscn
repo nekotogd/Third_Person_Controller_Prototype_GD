@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://maps/Test01/TerrSS01.png" type="Texture" id=2]
@@ -24,6 +24,9 @@
 [ext_resource path="res://maps/Test01/TerrSS07.png" type="Texture" id=22]
 [ext_resource path="res://maps/Test01/TerrSS16.png" type="Texture" id=23]
 [ext_resource path="res://sounds/ost/Kingdom Hearts 1.5 HD ReMix -Destiny Islands- Extended.mp3" type="AudioStream" id=24]
+[ext_resource path="res://addons/cloud/Cloud.gd" type="Script" id=25]
+[ext_resource path="res://addons/cloud/CageMesh.tres" type="ArrayMesh" id=26]
+[ext_resource path="res://addons/cloud/Cloud.shader" type="Shader" id=27]
 
 [sub_resource type="ProceduralSky" id=30]
 sky_top_color = Color( 0, 0.741176, 1, 1 )
@@ -37,6 +40,95 @@ background_mode = 2
 background_sky = SubResource( 30 )
 tonemap_mode = 3
 ss_reflections_enabled = true
+
+[sub_resource type="ShaderMaterial" id=37]
+render_priority = -123
+shader = ExtResource( 27 )
+shader_param/seed = -10000.0
+shader_param/speed = Vector2( 2, 0 )
+shader_param/transform_speed = Vector2( 0, 1e-05 )
+shader_param/min_density = 0.6
+shader_param/max_density = 6.0
+shader_param/altitude = 2000.0
+shader_param/color = Color( 0.568627, 0.698039, 0.878431, 1 )
+shader_param/detail_noise = true
+shader_param/upper_enabled = true
+shader_param/lower_enabled = false
+
+[sub_resource type="ShaderMaterial" id=38]
+render_priority = -124
+next_pass = SubResource( 37 )
+shader = ExtResource( 27 )
+shader_param/seed = -10000.0
+shader_param/speed = Vector2( 2, 0 )
+shader_param/transform_speed = Vector2( 0, 1e-05 )
+shader_param/min_density = 0.54219
+shader_param/max_density = 8.89052
+shader_param/altitude = 2031.2
+shader_param/color = Color( 0.723921, 0.806745, 0.922196, 1 )
+shader_param/detail_noise = false
+shader_param/upper_enabled = true
+shader_param/lower_enabled = false
+
+[sub_resource type="ShaderMaterial" id=39]
+render_priority = -125
+next_pass = SubResource( 38 )
+shader = ExtResource( 27 )
+shader_param/seed = -10000.0
+shader_param/speed = Vector2( 2, 0 )
+shader_param/transform_speed = Vector2( 0, 1e-05 )
+shader_param/min_density = 0.498681
+shader_param/max_density = 11.066
+shader_param/altitude = 2062.4
+shader_param/color = Color( 0.844706, 0.891294, 0.956235, 1 )
+shader_param/detail_noise = false
+shader_param/upper_enabled = true
+shader_param/lower_enabled = false
+
+[sub_resource type="ShaderMaterial" id=40]
+render_priority = -126
+next_pass = SubResource( 39 )
+shader = ExtResource( 27 )
+shader_param/seed = -10000.0
+shader_param/speed = Vector2( 2, 0 )
+shader_param/transform_speed = Vector2( 0, 1e-05 )
+shader_param/min_density = 0.480237
+shader_param/max_density = 11.9882
+shader_param/altitude = 2093.6
+shader_param/color = Color( 0.93098, 0.951686, 0.980549, 1 )
+shader_param/detail_noise = false
+shader_param/upper_enabled = true
+shader_param/lower_enabled = false
+
+[sub_resource type="ShaderMaterial" id=41]
+render_priority = -127
+next_pass = SubResource( 40 )
+shader = ExtResource( 27 )
+shader_param/seed = -10000.0
+shader_param/speed = Vector2( 2, 0 )
+shader_param/transform_speed = Vector2( 0, 1e-05 )
+shader_param/min_density = 0.491421
+shader_param/max_density = 11.429
+shader_param/altitude = 2124.8
+shader_param/color = Color( 0.982745, 0.987922, 0.995137, 1 )
+shader_param/detail_noise = false
+shader_param/upper_enabled = true
+shader_param/lower_enabled = false
+
+[sub_resource type="ShaderMaterial" id=42]
+render_priority = -128
+next_pass = SubResource( 41 )
+shader = ExtResource( 27 )
+shader_param/seed = -10000.0
+shader_param/speed = Vector2( 2, 0 )
+shader_param/transform_speed = Vector2( 0, 1e-05 )
+shader_param/min_density = 0.529466
+shader_param/max_density = 9.52671
+shader_param/altitude = 2156.0
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/detail_noise = false
+shader_param/upper_enabled = true
+shader_param/lower_enabled = false
 
 [sub_resource type="SpatialMaterial" id=1]
 resource_name = "m9"
@@ -602,6 +694,13 @@ environment = SubResource( 31 )
 [node name="DirectionalLight" type="DirectionalLight" parent="env"]
 transform = Transform( -0.730365, -0.358197, 0.581603, 0, 0.851471, 0.524402, -0.683057, 0.383005, -0.621884, 0, 6.26796, 0 )
 shadow_enabled = true
+
+[node name="CloudDome" type="MeshInstance" parent="env"]
+transform = Transform( 250.025, 0, 0, 0, 250.025, 0, 0, 0, 250.025, -4.6625, 1.87664, -9.6373 )
+material_override = SubResource( 42 )
+mesh = ExtResource( 26 )
+material/0 = null
+script = ExtResource( 25 )
 
 [node name="mesh" type="Spatial" parent="."]
 
