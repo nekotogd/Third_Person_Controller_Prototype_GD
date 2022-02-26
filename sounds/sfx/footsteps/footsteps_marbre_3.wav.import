@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/footsteps_marbre_3.wav-21823e7404226f8f38a99d93f4d84815.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/footsteps/footsteps_marbre_3.wav"
+dest_files=[ "res://.import/footsteps_marbre_3.wav-21823e7404226f8f38a99d93f4d84815.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

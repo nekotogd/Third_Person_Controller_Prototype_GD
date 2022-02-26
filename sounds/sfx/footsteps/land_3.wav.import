@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/land_3.wav-7595a8b18aae07c9aa56a3b5d0aca2ef.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/footsteps/land_3.wav"
+dest_files=[ "res://.import/land_3.wav-7595a8b18aae07c9aa56a3b5d0aca2ef.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
