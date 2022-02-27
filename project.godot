@@ -37,7 +37,7 @@ window/size/fullscreen=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/Silicon.vfx.planar_reflection/plugin.cfg", "res://addons/cloud/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/Silicon.vfx.planar_reflection/plugin.cfg", "res://addons/cloud/plugin.cfg", "res://addons/jigglebones/plugin.cfg" )
 
 [input]
 

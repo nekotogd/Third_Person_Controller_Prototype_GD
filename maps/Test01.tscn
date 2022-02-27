@@ -844,11 +844,8 @@ shape = SubResource( 36 )
 [node name="Player_Body" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6625, 0, -5.3873 )
 
-[node name="Skeleton" parent="Player_Body/model/P_EX120outao" index="0"]
-bones/189/bound_children = [ NodePath("BoneAttachment") ]
-
 [node name="BoneAttachment" parent="Player_Body/model/P_EX120outao/Skeleton" index="1"]
-transform = Transform( -0.535478, -0.334536, 0.775465, 0.155997, -0.941582, -0.298478, 0.830018, -0.038857, 0.556381, -0.285785, 0.804505, -0.122245 )
+transform = Transform( -0.557428, -0.363148, 0.746589, 0.206278, -0.931644, -0.299146, 0.804192, -0.0127456, 0.594232, -0.283667, 0.807033, -0.118821 )
 
 [node name="ost" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
