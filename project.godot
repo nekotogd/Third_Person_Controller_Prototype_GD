@@ -20,8 +20,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Kingdom Hearts Prototype"
-config/description="An open source Kingdom Hearts prototype using Godot 3.4 "
+config/name="Third Person Character Prototype"
+config/description="An open source Third Person Controller prototype using Godot 3.4 "
 run/main_scene="res://maps/Test01.tscn"
 config/icon="res://icon.png"
 
