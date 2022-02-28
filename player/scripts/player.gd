@@ -56,11 +56,11 @@ onready var headcheck = $head_check
 
 func check_weapon_states(delta):
 	if current_weapon == 1:
-		anim_tree.set("parameters/idle_states/blend_amount", 1)
+		anim_tree.set("parameters/idle_states/blend_amount", lerp(anim_tree.get("parameters/idle_states/blend_amount"), 1, delta * 5))
 		anim_tree.set("parameters/walk_states/blend_amount", 1)
 		anim_tree.set("parameters/run_states/blend_amount", 1)
 	if current_weapon == 0:
-		anim_tree.set("parameters/idle_states/blend_amount", 0)
+		anim_tree.set("parameters/idle_states/blend_amount", lerp(anim_tree.get("parameters/idle_states/blend_amount"), 0, delta * 5))
 		anim_tree.set("parameters/walk_states/blend_amount", 0)
 		anim_tree.set("parameters/run_states/blend_amount", 0)
 
@@ -84,6 +84,9 @@ func _physics_process(delta):
 			Input.get_action_strength("move_forward") - Input.get_action_strength("move_backward"))
 
 		direction = direction.rotated(Vector3.UP, rot).normalized()
+
+		if current_weapon == 1:
+			$weapon_timer.start()
 
 		if Input.is_action_pressed("walk_toggle"):
 			state = states.STATE_SPRINT
