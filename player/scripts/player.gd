@@ -35,7 +35,7 @@ export var head_checked = false
 export var dodging = false
 
 var floor_just = false
-var can_move = false
+var can_move = true
 
 var run_toggle = true
 var running = false
@@ -48,6 +48,7 @@ var isAttacking = false
 #var checks
 onready var mesh = $model
 onready var anim_tree = $AnimationTree
+onready var anim_player = $model/AnimationPlayer
 onready var headcheck = $head_check
 
 func check_weapon_states(delta):
@@ -66,6 +67,24 @@ func _ready():
 			running = false if running else true
 	else:
 		running = Input.is_action_pressed("walk_toggle")
+	
+	init_pausable_animations()
+
+func init_pausable_animations():
+	var pausable_anims := [
+		"attack_1",
+		"attack_2",
+		"attack_3",
+		"attack_4",
+		"attack_5",
+		"land",
+		"air_attack_1",
+		"air_attack_2",
+		"air_attack_3",
+		"air_attack_4",
+	]
+	for anim_name in pausable_anims:
+		create_pausable_animation(anim_name)
 
 func _physics_process(delta):
 
@@ -75,7 +94,7 @@ func _physics_process(delta):
 # get root_motion for character
 	root_motion = anim_tree.get_root_motion_transform()
 
-	if Input.is_action_pressed("move_forward") ||  Input.is_action_pressed("move_backward") ||  Input.is_action_pressed("move_left") ||  Input.is_action_pressed("move_right"):
+	if (Input.is_action_pressed("move_forward") ||  Input.is_action_pressed("move_backward") ||  Input.is_action_pressed("move_left") ||  Input.is_action_pressed("move_right")) and can_move:
 
 		direction = Vector3(Input.get_action_strength("move_left") - Input.get_action_strength("move_right"), 0,
 			Input.get_action_strength("move_forward") - Input.get_action_strength("move_backward"))
@@ -146,13 +165,13 @@ func _physics_process(delta):
 	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(direction.x, direction.z) - rotation.y, delta * angular_acceleration)
 
 #jumping and double jumping script
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and can_move:
 		if jump_num == 1:
 			$AnimationTree.set("parameters/jump/active", true)
 			vertical_velocity = jump_magnitude
 			jump_num = 1
 
-	elif Input.is_action_just_pressed("jump") and not is_on_floor():
+	elif Input.is_action_just_pressed("jump") and not is_on_floor() and can_move:
 		if jump_num == 1:
 			$AnimationTree.set("parameters/djump/active", true)
 			vertical_velocity = double_jump_magnitude
@@ -183,6 +202,29 @@ func root_motion_velocity(delta):
 	root_vel.y = 0.0
 	
 	return root_vel
+
+func resume_movement():
+	can_move = true
+
+func pause_movement():
+	can_move = false
+
+func create_pausable_animation(animation_name : String):
+	var anim : Animation = anim_player.get_animation(animation_name)
+	var track_idx : int = anim.add_track(anim.TYPE_METHOD)
+	var track_path : NodePath = anim_player.get_parent().get_path_to(self)
+	
+	anim.track_set_path(track_idx, track_path)
+	var start_key : Dictionary = {
+		"method" : "pause_movement",
+		"args" : []
+	}
+	var end_key : Dictionary = {
+		"method" : "resume_movement",
+		"args" : []
+	}
+	anim.track_insert_key(track_idx, 0.0, start_key)
+	anim.track_insert_key(track_idx, anim.length - 0.01, end_key)
 
 func _on_weapon_timer_timeout():
 	!anim_tree.set("parameters/sheathe_kb/active", true)
