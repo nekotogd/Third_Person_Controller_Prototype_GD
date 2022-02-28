@@ -89,11 +89,9 @@ func _physics_process(delta):
 			$weapon_timer.start()
 
 		if Input.is_action_pressed("walk_toggle"):
-			state = states.STATE_SPRINT
 			movement_speed = walk_speed
 			anim_tree.set("parameters/iwr_blend/blend_amount", lerp(anim_tree.get("parameters/iwr_blend/blend_amount"), 0, delta * acceleration))
 		else:
-			state = states.STATE_WALK
 			movement_speed = run_speed
 			anim_tree.set("parameters/iwr_blend/blend_amount", lerp(anim_tree.get("parameters/iwr_blend/blend_amount"), 1, delta * acceleration))
 
