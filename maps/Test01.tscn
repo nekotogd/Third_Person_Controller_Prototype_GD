@@ -848,7 +848,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6625, 0, -5.3873 )
 bones/189/bound_children = [ NodePath("BoneAttachment") ]
 
 [node name="BoneAttachment" parent="Player_Body/model/P_EX120outao/Skeleton" index="1"]
-transform = Transform( -0.538068, -0.324821, 0.777799, 0.145625, -0.944714, -0.293785, 0.830228, -0.044808, 0.555621, -0.281924, 0.803252, -0.119714 )
+transform = Transform( -0.542231, -0.350613, 0.763579, 0.173139, -0.935898, -0.306787, 0.822199, -0.0341427, 0.568176, -0.288779, 0.807285, -0.125691 )
 
 [node name="ost" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )

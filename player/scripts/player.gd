@@ -77,6 +77,7 @@ func init_pausable_animations():
 		"attack_3",
 		"attack_4",
 		"attack_5",
+		"block_1",
 		"land",
 		"air_attack_1",
 		"air_attack_2",
