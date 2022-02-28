@@ -45,10 +45,6 @@ onready var current_weapon = 0
 var canPressAttack = true
 var isAttacking = false
 
-# character states
-enum states {STATE_IDLE, STATE_WALK, STATE_SPRINT}
-var state = states.STATE_WALK
-
 #var checks
 onready var mesh = $model
 onready var anim_tree = $AnimationTree
@@ -72,10 +68,11 @@ func _ready():
 		running = Input.is_action_pressed("walk_toggle")
 
 func _physics_process(delta):
-	#basic movement script, speaks for itself.
+
+# basic movement script, speaks for itself.
 	var rot = $camBase/camRot.global_transform.basis.get_euler().y
 
-	# get root_motion for character
+# get root_motion for character
 	root_motion = anim_tree.get_root_motion_transform()
 
 	if Input.is_action_pressed("move_forward") ||  Input.is_action_pressed("move_backward") ||  Input.is_action_pressed("move_left") ||  Input.is_action_pressed("move_right"):
@@ -103,13 +100,13 @@ func _physics_process(delta):
 
 	move_and_slide(velocity + Vector3.UP * vertical_velocity - get_floor_normal() * weight_on_ground + root_motion_velocity(delta), Vector3.UP)
 
-	#player is in the air
+# player is in the air
 	if !is_on_floor():
 		anim_tree.set("parameters/agc_trans/current", 0)
 		vertical_velocity -= gravity * delta
 		floor_just = false
 
-	#air combat code
+# air combat code
 		if Input.is_action_just_pressed("attack"):
 			anim_tree.set("parameters/air_hit1/active", true)
 			current_weapon = 1
@@ -117,11 +114,10 @@ func _physics_process(delta):
 			
 			vertical_velocity = 9
 			velocity = direction * 20
-			
-			$weapon_timer.start()
+
 			$sora_vl/attack_2.play()
 
-	#player is on the ground
+# player is on the ground
 	else:
 		if vertical_velocity < -7:
 			if floor_just == false:
@@ -132,23 +128,21 @@ func _physics_process(delta):
 		jump_num = 1
 		vertical_velocity = 0
 
-	#combat ground code	
+# combat ground code	
 		if Input.is_action_just_pressed("attack"):
 			!anim_tree.set("parameters/hit1/active", true)
 			current_weapon = 1
 			$model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key.visible = true
 			
-			$sora_vl/attack_1.play()
 			$weapon_timer.start()
 
 		if current_weapon == 1:
 			if Input.is_action_just_pressed("block"):
 				anim_tree.set("parameters/block/active", true)
 				
-				$sora_vl/block.play()
 				$weapon_timer.start()
 
-	#run/sprint blending
+# run/sprint blending
 	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(direction.x, direction.z) - rotation.y, delta * angular_acceleration)
 
 #jumping and double jumping script
@@ -165,12 +159,12 @@ func _physics_process(delta):
 			velocity = direction * double_jump_distance
 			jump_num = 2
 
-#this is for when the player's head collides with a ceiling, that it pushes the player back down
+# this is for when the player's head collides with a ceiling, that it pushes the player back down
 	if headcheck.is_colliding():
 		head_checked = true
 		vertical_velocity = -2
 
-# Check current weapon
+# check current weapon
 	check_weapon_states(delta)
 
 func root_motion_velocity(delta):
