@@ -2,7 +2,6 @@ extends KinematicBody
 
 #base player stats
 export var health = 100
-export var magick = 100
 
 #vectors sort of speak for themselves
 var direction = Vector3.BACK
@@ -134,12 +133,12 @@ func _physics_process(delta):
 			
 			vertical_velocity = 9
 			velocity = direction * 20
-
-			$sora_vl/attack_2.play()
+			
+			$weapon_timer.start()
 
 # player is on the ground
 	else:
-		if vertical_velocity < -7:
+		if vertical_velocity < -9:
 			if floor_just == false:
 				$AnimationTree.set("parameters/land/active",true)
 				floor_just = true
