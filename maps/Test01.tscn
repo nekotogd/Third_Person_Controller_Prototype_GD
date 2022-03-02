@@ -38,7 +38,7 @@ sun_longitude = 45.0
 [sub_resource type="Environment" id=31]
 background_mode = 2
 background_sky = SubResource( 30 )
-tonemap_mode = 3
+tonemap_mode = 4
 ssao_enabled = true
 
 [sub_resource type="ShaderMaterial" id=60]
@@ -46,8 +46,8 @@ render_priority = -123
 shader = ExtResource( 27 )
 shader_param/seed = -10000.0
 shader_param/speed = Vector2( 2, 0 )
-shader_param/transform_speed = Vector2( 0, 1e-05 )
-shader_param/min_density = 0.6
+shader_param/transform_speed = Vector2( 0.002, 0.002 )
+shader_param/min_density = 0.45
 shader_param/max_density = 6.0
 shader_param/altitude = 2000.0
 shader_param/color = Color( 0.568627, 0.698039, 0.878431, 1 )
@@ -61,8 +61,8 @@ next_pass = SubResource( 60 )
 shader = ExtResource( 27 )
 shader_param/seed = -10000.0
 shader_param/speed = Vector2( 2, 0 )
-shader_param/transform_speed = Vector2( 0, 1e-05 )
-shader_param/min_density = 0.54219
+shader_param/transform_speed = Vector2( 0.002, 0.002 )
+shader_param/min_density = 0.45
 shader_param/max_density = 8.89052
 shader_param/altitude = 2031.2
 shader_param/color = Color( 0.723921, 0.806745, 0.922196, 1 )
@@ -76,8 +76,8 @@ next_pass = SubResource( 61 )
 shader = ExtResource( 27 )
 shader_param/seed = -10000.0
 shader_param/speed = Vector2( 2, 0 )
-shader_param/transform_speed = Vector2( 0, 1e-05 )
-shader_param/min_density = 0.498681
+shader_param/transform_speed = Vector2( 0.002, 0.002 )
+shader_param/min_density = 0.45
 shader_param/max_density = 11.066
 shader_param/altitude = 2062.4
 shader_param/color = Color( 0.844706, 0.891294, 0.956235, 1 )
@@ -91,8 +91,8 @@ next_pass = SubResource( 62 )
 shader = ExtResource( 27 )
 shader_param/seed = -10000.0
 shader_param/speed = Vector2( 2, 0 )
-shader_param/transform_speed = Vector2( 0, 1e-05 )
-shader_param/min_density = 0.480237
+shader_param/transform_speed = Vector2( 0.002, 0.002 )
+shader_param/min_density = 0.45
 shader_param/max_density = 11.9882
 shader_param/altitude = 2093.6
 shader_param/color = Color( 0.93098, 0.951686, 0.980549, 1 )
@@ -106,8 +106,8 @@ next_pass = SubResource( 63 )
 shader = ExtResource( 27 )
 shader_param/seed = -10000.0
 shader_param/speed = Vector2( 2, 0 )
-shader_param/transform_speed = Vector2( 0, 1e-05 )
-shader_param/min_density = 0.491421
+shader_param/transform_speed = Vector2( 0.002, 0.002 )
+shader_param/min_density = 0.45
 shader_param/max_density = 11.429
 shader_param/altitude = 2124.8
 shader_param/color = Color( 0.982745, 0.987922, 0.995137, 1 )
@@ -121,8 +121,8 @@ next_pass = SubResource( 64 )
 shader = ExtResource( 27 )
 shader_param/seed = -10000.0
 shader_param/speed = Vector2( 2, 0 )
-shader_param/transform_speed = Vector2( 0, 1e-05 )
-shader_param/min_density = 0.529466
+shader_param/transform_speed = Vector2( 0.002, 0.002 )
+shader_param/min_density = 0.45
 shader_param/max_density = 9.52671
 shader_param/altitude = 2156.0
 shader_param/color = Color( 1, 1, 1, 1 )
@@ -740,6 +740,11 @@ material_override = SubResource( 65 )
 mesh = ExtResource( 26 )
 material/0 = null
 script = ExtResource( 25 )
+cloud_transform_speed = Vector2( 0.002, 0.002 )
+cloud_min_density_low = 0.45
+cloud_min_density_high = 0.45
+auto_follow_camera = false
+cloud_shadow_enabled = false
 
 [node name="mesh" type="Spatial" parent="."]
 
@@ -848,10 +853,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6625, 0, -5.3873 )
 bones/189/bound_children = [ NodePath("BoneAttachment") ]
 
 [node name="BoneAttachment" parent="Player_Body/model/P_EX120outao/Skeleton" index="1"]
-transform = Transform( -0.53518, -0.333627, 0.776062, 0.154849, -0.941882, -0.298126, 0.830426, -0.0393774, 0.555737, -0.285571, 0.804391, -0.122104 )
+transform = Transform( -0.553837, -0.338591, 0.760669, 0.176798, -0.940572, -0.289944, 0.813639, -0.0260957, 0.580784, -0.279713, 0.803415, -0.115649 )
 
 [node name="ost" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
 volume_db = -25.0
+autoplay = true
 
 [editable path="Player_Body"]
