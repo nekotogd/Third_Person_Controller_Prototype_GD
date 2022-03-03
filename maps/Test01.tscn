@@ -38,6 +38,9 @@ sun_longitude = 45.0
 [sub_resource type="Environment" id=31]
 background_mode = 2
 background_sky = SubResource( 30 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 0.4
+ambient_light_sky_contribution = 0.5
 tonemap_mode = 4
 ssao_enabled = true
 
@@ -730,6 +733,7 @@ environment = SubResource( 31 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="env"]
 transform = Transform( -0.730365, -0.358197, 0.581603, 0, 0.851471, 0.524402, -0.683057, 0.383005, -0.621884, 0, 6.26796, 0 )
+light_energy = 0.7
 shadow_enabled = true
 directional_shadow_normal_bias = 0.0
 directional_shadow_bias_split_scale = 1.0
@@ -853,7 +857,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6625, 0, -5.3873 )
 bones/189/bound_children = [ NodePath("BoneAttachment") ]
 
 [node name="BoneAttachment" parent="Player_Body/model/P_EX120outao/Skeleton" index="1"]
-transform = Transform( -0.536505, -0.337287, 0.773561, 0.159022, -0.940641, -0.299846, 0.82878, -0.0378547, 0.558293, -0.286393, 0.804956, -0.122803 )
+transform = Transform( -0.534375, -0.327058, 0.779405, 0.146663, -0.943997, -0.295568, 0.832427, -0.0436334, 0.552414, -0.283652, 0.803593, -0.120879 )
 
 [node name="ost" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
