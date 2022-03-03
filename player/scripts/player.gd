@@ -41,6 +41,7 @@ var running = false
 
 #combat variables
 onready var current_weapon = 0
+var attack_anim = -1
 var canPressAttack = true
 var isAttacking = false
 
@@ -125,16 +126,36 @@ func _physics_process(delta):
 		vertical_velocity -= gravity * delta
 		floor_just = false
 
-# air combat code
-		if Input.is_action_just_pressed("attack"):
+		if Input.is_action_just_pressed("attack") && attack_anim == -1:
 			anim_tree.set("parameters/air_hit1/active", true)
 			current_weapon = 1
+			$attack1_timer.start()
+			$attack_window.start()
 			$model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key.visible = true
+			$weapon_timer.start()
+				
+			vertical_velocity = 9
+			velocity = direction * 25
+			
+		if Input.is_action_just_pressed("attack") && attack_anim == 0 && $attack_window.time_left > 0 && $attack1_timer.time_left == 0:
+			anim_tree.set("parameters/air_hit2/active", true)
+			current_weapon = 1
+			$attack2_timer.start()
+			$attack_window.start()
+			$weapon_timer.start()
 			
 			vertical_velocity = 9
-			velocity = direction * 20
+			velocity = direction * 25
 			
+		if Input.is_action_just_pressed("attack") && attack_anim == 1 && $attack_window.time_left > 0 && $attack2_timer.time_left == 0:
+			anim_tree.set("parameters/air_hit3/active", true)
+			current_weapon = 1
+			$attack_window.stop()
+			$attack3_timer.start()
 			$weapon_timer.start()
+			
+			vertical_velocity = 9
+			velocity = direction * 25
 
 # player is on the ground
 	else:
@@ -147,18 +168,32 @@ func _physics_process(delta):
 		jump_num = 1
 		vertical_velocity = 0
 
-# combat ground code	
-		if Input.is_action_just_pressed("attack"):
-			!anim_tree.set("parameters/hit1/active", true)
+# combat ground code
+		if Input.is_action_just_pressed("attack") && attack_anim == -1:
+			anim_tree.set("parameters/hit1/active", true)
 			current_weapon = 1
+			$attack1_timer.start()
+			$attack_window.start()
 			$model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key.visible = true
+			$weapon_timer.start()
 			
+		if Input.is_action_just_pressed("attack") && attack_anim == 0 && $attack_window.time_left > 0 && $attack1_timer.time_left == 0:
+			anim_tree.set("parameters/hit2/active", true)
+			current_weapon = 1
+			$attack2_timer.start()
+			$attack_window.start()
+			$weapon_timer.start()
+			
+		if Input.is_action_just_pressed("attack") && attack_anim == 1 && $attack_window.time_left > 0 && $attack2_timer.time_left == 0:
+			anim_tree.set("parameters/hit3/active", true)
+			current_weapon = 1
+			$attack_window.stop()
+			$attack3_timer.start()
 			$weapon_timer.start()
 
 		if current_weapon == 1:
 			if Input.is_action_just_pressed("block"):
 				anim_tree.set("parameters/block/active", true)
-				
 				$weapon_timer.start()
 
 # run/sprint blending
@@ -230,3 +265,21 @@ func _on_weapon_timer_timeout():
 	!anim_tree.set("parameters/sheathe_kb/active", true)
 	current_weapon = 0
 	$model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key.visible = false
+
+func _on_attack_window_timeout():
+	attack_anim = -1
+	canPressAttack = true
+	isAttacking = false
+
+func _on_attack1_timer_timeout():
+	attack_anim = 0
+	canPressAttack = true
+	
+func _on_attack2_timer_timeout():
+	attack_anim = 1
+	canPressAttack = true
+
+func _on_attack3_timer_timeout():
+	attack_anim = -1
+	canPressAttack = true
+	isAttacking = false
