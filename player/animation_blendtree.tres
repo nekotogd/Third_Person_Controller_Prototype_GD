@@ -1,0 +1,309 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=62 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=172]
+animation = "draw_kb"
+
+[sub_resource type="AnimationNodeAnimation" id=173]
+animation = "sheathe_kb"
+
+[sub_resource type="AnimationNodeAnimation" id=191]
+animation = "recover"
+
+[sub_resource type="AnimationNodeAnimation" id=194]
+animation = "attack_1"
+
+[sub_resource type="AnimationNodeAnimation" id=181]
+animation = "air_attack_1"
+
+[sub_resource type="AnimationNodeAnimation" id=196]
+animation = "block_1"
+
+[sub_resource type="AnimationNodeAnimation" id=203]
+animation = "attack_3"
+
+[sub_resource type="AnimationNodeAnimation" id=204]
+animation = "attack_5"
+
+[sub_resource type="AnimationNodeAnimation" id=205]
+animation = "air_attack_2"
+
+[sub_resource type="AnimationNodeAnimation" id=206]
+animation = "air_attack_3"
+
+[sub_resource type="AnimationNodeAnimation" id=184]
+animation = "falling"
+
+[sub_resource type="AnimationNodeAnimation" id=215]
+animation = "hit_1"
+
+[sub_resource type="AnimationNodeAnimation" id=219]
+animation = "air_hit_3"
+
+[sub_resource type="AnimationNodeAnimation" id=185]
+animation = "run"
+
+[sub_resource type="AnimationNodeAnimation" id=195]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=187]
+animation = "combat_idle"
+
+[sub_resource type="AnimationNodeAnimation" id=188]
+animation = "walk"
+
+[sub_resource type="AnimationNodeAnimation" id=189]
+animation = "combat_run_2"
+
+[sub_resource type="AnimationNodeAnimation" id=192]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=199]
+animation = "land"
+
+[sub_resource type="AnimationNodeAnimation" id=190]
+animation = "combat_walk_2"
+
+[sub_resource type="AnimationNodeTimeScale" id=129]
+
+[sub_resource type="AnimationNodeTimeScale" id=130]
+
+[sub_resource type="AnimationNodeTimeScale" id=134]
+
+[sub_resource type="AnimationNodeTimeScale" id=182]
+
+[sub_resource type="AnimationNodeTimeScale" id=198]
+
+[sub_resource type="AnimationNodeTimeScale" id=207]
+
+[sub_resource type="AnimationNodeTimeScale" id=208]
+
+[sub_resource type="AnimationNodeTimeScale" id=209]
+
+[sub_resource type="AnimationNodeTimeScale" id=210]
+
+[sub_resource type="AnimationNodeTimeScale" id=218]
+
+[sub_resource type="AnimationNodeTimeScale" id=89]
+
+[sub_resource type="AnimationNodeTimeScale" id=220]
+
+[sub_resource type="AnimationNodeTimeScale" id=222]
+
+[sub_resource type="AnimationNodeTimeScale" id=90]
+
+[sub_resource type="AnimationNodeTimeScale" id=96]
+
+[sub_resource type="AnimationNodeTimeScale" id=98]
+
+[sub_resource type="AnimationNodeTimeScale" id=101]
+
+[sub_resource type="AnimationNodeTimeScale" id=115]
+
+[sub_resource type="AnimationNodeTimeScale" id=116]
+
+[sub_resource type="AnimationNodeTimeScale" id=117]
+
+[sub_resource type="AnimationNodeTimeScale" id=92]
+
+[sub_resource type="AnimationNodeTransition" id=99]
+input_count = 2
+xfade_time = 0.12
+input_0/name = "air"
+input_0/auto_advance = false
+input_1/name = "ground"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeOneShot" id=183]
+fadein_time = 0.2
+fadeout_time = 0.3
+sync = true
+
+[sub_resource type="AnimationNodeOneShot" id=211]
+fadein_time = 0.2
+fadeout_time = 0.3
+sync = true
+
+[sub_resource type="AnimationNodeOneShot" id=212]
+fadein_time = 0.2
+fadeout_time = 0.4
+sync = true
+
+[sub_resource type="AnimationNodeOneShot" id=197]
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeOneShot" id=217]
+fadein_time = 0.2
+fadeout_time = 0.3
+
+[sub_resource type="AnimationNodeOneShot" id=221]
+
+[sub_resource type="AnimationNodeOneShot" id=102]
+fadein_time = 0.2
+fadeout_time = 0.3
+
+[sub_resource type="AnimationNodeOneShot" id=120]
+fadein_time = 0.3
+fadeout_time = 0.3
+
+[sub_resource type="AnimationNodeOneShot" id=135]
+fadein_time = 0.2
+fadeout_time = 0.3
+sync = true
+
+[sub_resource type="AnimationNodeOneShot" id=213]
+fadein_time = 0.2
+fadeout_time = 0.3
+sync = true
+
+[sub_resource type="AnimationNodeOneShot" id=214]
+fadein_time = 0.2
+fadeout_time = 0.3
+sync = true
+
+[sub_resource type="AnimationNodeBlend2" id=121]
+
+[sub_resource type="AnimationNodeBlend3" id=180]
+sync = true
+
+[sub_resource type="AnimationNodeOneShot" id=87]
+fadein_time = 0.2
+fadeout_time = 0.3
+
+[sub_resource type="AnimationNodeOneShot" id=88]
+fadeout_time = 0.4
+
+[sub_resource type="AnimationNodeBlend2" id=131]
+
+[sub_resource type="AnimationNodeOneShot" id=123]
+fadein_time = 0.2
+fadeout_time = 0.3
+sync = true
+
+[sub_resource type="AnimationNodeBlend2" id=132]
+
+[resource]
+graph_offset = Vector2( 1995.37, 127.5 )
+nodes/Animation/node = SubResource( 190 )
+nodes/Animation/position = Vector2( -740, 200 )
+"nodes/Animation 10/node" = SubResource( 172 )
+"nodes/Animation 10/position" = Vector2( 980, 240 )
+"nodes/Animation 11/node" = SubResource( 173 )
+"nodes/Animation 11/position" = Vector2( 1160, 240 )
+"nodes/Animation 12/node" = SubResource( 191 )
+"nodes/Animation 12/position" = Vector2( 520, 240 )
+"nodes/Animation 13/node" = SubResource( 194 )
+"nodes/Animation 13/position" = Vector2( 1500, 240 )
+"nodes/Animation 14/node" = SubResource( 181 )
+"nodes/Animation 14/position" = Vector2( 1500, 660 )
+"nodes/Animation 15/node" = SubResource( 196 )
+"nodes/Animation 15/position" = Vector2( 2140, 240 )
+"nodes/Animation 16/node" = SubResource( 203 )
+"nodes/Animation 16/position" = Vector2( 1680, 240 )
+"nodes/Animation 17/node" = SubResource( 204 )
+"nodes/Animation 17/position" = Vector2( 1860, 240 )
+"nodes/Animation 18/node" = SubResource( 205 )
+"nodes/Animation 18/position" = Vector2( 1680, 660 )
+"nodes/Animation 19/node" = SubResource( 206 )
+"nodes/Animation 19/position" = Vector2( 1860, 660 )
+"nodes/Animation 2/node" = SubResource( 184 )
+"nodes/Animation 2/position" = Vector2( -120, -60 )
+"nodes/Animation 20/node" = SubResource( 215 )
+"nodes/Animation 20/position" = Vector2( 2420, 240 )
+"nodes/Animation 21/node" = SubResource( 219 )
+"nodes/Animation 21/position" = Vector2( 2700, 240 )
+"nodes/Animation 3/node" = SubResource( 185 )
+"nodes/Animation 3/position" = Vector2( -740, 340 )
+"nodes/Animation 4/node" = SubResource( 195 )
+"nodes/Animation 4/position" = Vector2( -740, -180 )
+"nodes/Animation 5/node" = SubResource( 187 )
+"nodes/Animation 5/position" = Vector2( -740, -60 )
+"nodes/Animation 6/node" = SubResource( 188 )
+"nodes/Animation 6/position" = Vector2( -740, 80 )
+"nodes/Animation 7/node" = SubResource( 189 )
+"nodes/Animation 7/position" = Vector2( -740, 460 )
+"nodes/Animation 8/node" = SubResource( 192 )
+"nodes/Animation 8/position" = Vector2( 340, 240 )
+"nodes/Animation 9/node" = SubResource( 199 )
+"nodes/Animation 9/position" = Vector2( 700, 240 )
+nodes/TimeScale/node = SubResource( 92 )
+nodes/TimeScale/position = Vector2( -580, -180 )
+"nodes/TimeScale 10/node" = SubResource( 129 )
+"nodes/TimeScale 10/position" = Vector2( -540, 200 )
+"nodes/TimeScale 11/node" = SubResource( 130 )
+"nodes/TimeScale 11/position" = Vector2( -540, 460 )
+"nodes/TimeScale 12/node" = SubResource( 134 )
+"nodes/TimeScale 12/position" = Vector2( 1500, 120 )
+"nodes/TimeScale 13/node" = SubResource( 182 )
+"nodes/TimeScale 13/position" = Vector2( 1500, 540 )
+"nodes/TimeScale 14/node" = SubResource( 198 )
+"nodes/TimeScale 14/position" = Vector2( 2140, 120 )
+"nodes/TimeScale 15/node" = SubResource( 207 )
+"nodes/TimeScale 15/position" = Vector2( 1680, 120 )
+"nodes/TimeScale 16/node" = SubResource( 208 )
+"nodes/TimeScale 16/position" = Vector2( 1860, 120 )
+"nodes/TimeScale 17/node" = SubResource( 209 )
+"nodes/TimeScale 17/position" = Vector2( 1680, 540 )
+"nodes/TimeScale 18/node" = SubResource( 210 )
+"nodes/TimeScale 18/position" = Vector2( 1860, 540 )
+"nodes/TimeScale 19/node" = SubResource( 218 )
+"nodes/TimeScale 19/position" = Vector2( 2420, 120 )
+"nodes/TimeScale 2/node" = SubResource( 89 )
+"nodes/TimeScale 2/position" = Vector2( -580, 80 )
+"nodes/TimeScale 20/node" = SubResource( 220 )
+"nodes/TimeScale 20/position" = Vector2( 2700, 120 )
+"nodes/TimeScale 21/node" = SubResource( 222 )
+"nodes/TimeScale 21/position" = Vector2( 2675.37, 57 )
+"nodes/TimeScale 3/node" = SubResource( 90 )
+"nodes/TimeScale 3/position" = Vector2( -580, 340 )
+"nodes/TimeScale 4/node" = SubResource( 96 )
+"nodes/TimeScale 4/position" = Vector2( 340, 120 )
+"nodes/TimeScale 5/node" = SubResource( 98 )
+"nodes/TimeScale 5/position" = Vector2( 700, 120 )
+"nodes/TimeScale 6/node" = SubResource( 101 )
+"nodes/TimeScale 6/position" = Vector2( 520, 120 )
+"nodes/TimeScale 7/node" = SubResource( 115 )
+"nodes/TimeScale 7/position" = Vector2( -560, -60 )
+"nodes/TimeScale 8/node" = SubResource( 116 )
+"nodes/TimeScale 8/position" = Vector2( 980, 120 )
+"nodes/TimeScale 9/node" = SubResource( 117 )
+"nodes/TimeScale 9/position" = Vector2( 1160, 120 )
+nodes/agc_trans/node = SubResource( 99 )
+nodes/agc_trans/position = Vector2( 100, -60 )
+nodes/air_hit1/node = SubResource( 183 )
+nodes/air_hit1/position = Vector2( 1500, 360 )
+nodes/air_hit2/node = SubResource( 211 )
+nodes/air_hit2/position = Vector2( 1680, 360 )
+nodes/air_hit3/node = SubResource( 212 )
+nodes/air_hit3/position = Vector2( 1860, 360 )
+nodes/block/node = SubResource( 197 )
+nodes/block/position = Vector2( 2140, -60 )
+nodes/damage_1/node = SubResource( 217 )
+nodes/damage_1/position = Vector2( 2420, -60 )
+nodes/die/node = SubResource( 221 )
+nodes/die/position = Vector2( 2700, -60 )
+nodes/djump/node = SubResource( 102 )
+nodes/djump/position = Vector2( 520, -60 )
+nodes/draw_kb/node = SubResource( 120 )
+nodes/draw_kb/position = Vector2( 980, -60 )
+nodes/hit1/node = SubResource( 135 )
+nodes/hit1/position = Vector2( 1500, -60 )
+nodes/hit2/node = SubResource( 213 )
+nodes/hit2/position = Vector2( 1680, -60 )
+nodes/hit3/node = SubResource( 214 )
+nodes/hit3/position = Vector2( 1860, -60 )
+nodes/idle_states/node = SubResource( 121 )
+nodes/idle_states/position = Vector2( -360, -140 )
+nodes/iwr_blend/node = SubResource( 180 )
+nodes/iwr_blend/position = Vector2( -120, 60 )
+nodes/jump/node = SubResource( 87 )
+nodes/jump/position = Vector2( 340, -60 )
+nodes/land/node = SubResource( 88 )
+nodes/land/position = Vector2( 700, -60 )
+nodes/output/position = Vector2( 2980, -60 )
+nodes/run_states/node = SubResource( 131 )
+nodes/run_states/position = Vector2( -360, 340 )
+nodes/sheathe_kb/node = SubResource( 123 )
+nodes/sheathe_kb/position = Vector2( 1160, -60 )
+nodes/walk_states/node = SubResource( 132 )
+nodes/walk_states/position = Vector2( -360, 100 )
+node_connections = [ "output", 0, "die", "draw_kb", 0, "land", "draw_kb", 1, "TimeScale 8", "sheathe_kb", 0, "draw_kb", "sheathe_kb", 1, "TimeScale 9", "TimeScale 12", 0, "Animation 13", "TimeScale 13", 0, "Animation 14", "TimeScale 20", 0, "Animation 21", "TimeScale 17", 0, "Animation 18", "TimeScale 18", 0, "Animation 19", "TimeScale", 0, "Animation 4", "TimeScale 14", 0, "Animation 15", "TimeScale 19", 0, "Animation 20", "TimeScale 2", 0, "Animation 6", "TimeScale 3", 0, "Animation 3", "TimeScale 4", 0, "Animation 8", "TimeScale 16", 0, "Animation 17", "TimeScale 5", 0, "Animation 9", "TimeScale 6", 0, "Animation 12", "land", 0, "djump", "land", 1, "TimeScale 5", "TimeScale 10", 0, "Animation", "jump", 0, "agc_trans", "jump", 1, "TimeScale 4", "TimeScale 11", 0, "Animation 7", "TimeScale 15", 0, "Animation 16", "iwr_blend", 0, "idle_states", "iwr_blend", 1, "walk_states", "iwr_blend", 2, "run_states", "djump", 0, "jump", "djump", 1, "TimeScale 6", "block", 0, "air_hit3", "block", 1, "TimeScale 14", "TimeScale 8", 0, "Animation 10", "hit1", 0, "sheathe_kb", "hit1", 1, "TimeScale 12", "damage_1", 0, "block", "damage_1", 1, "TimeScale 19", "TimeScale 9", 0, "Animation 11", "TimeScale 7", 0, "Animation 5", "idle_states", 0, "TimeScale", "idle_states", 1, "TimeScale 7", "run_states", 0, "TimeScale 3", "run_states", 1, "TimeScale 11", "agc_trans", 0, "Animation 2", "agc_trans", 1, "iwr_blend", "air_hit2", 0, "air_hit1", "air_hit2", 1, "TimeScale 17", "air_hit1", 0, "hit3", "air_hit1", 1, "TimeScale 13", "air_hit3", 0, "air_hit2", "air_hit3", 1, "TimeScale 18", "hit3", 0, "hit2", "hit3", 1, "TimeScale 16", "walk_states", 0, "TimeScale 2", "walk_states", 1, "TimeScale 10", "hit2", 0, "hit1", "hit2", 1, "TimeScale 15", "die", 0, "damage_1", "die", 1, "TimeScale 20" ]

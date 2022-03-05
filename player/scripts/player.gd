@@ -1,7 +1,12 @@
 extends KinematicBody
 
 #base player stats
-export var health = 100
+# stats
+export var curHp : int = 10
+export var maxHp : int = 10
+export var damage : int = 1
+
+export var ra : int = 0
 
 #vectors sort of speak for themselves
 var direction = Vector3.BACK
@@ -83,6 +88,7 @@ func init_pausable_animations():
 		"air_attack_2",
 		"air_attack_3",
 		"air_attack_4",
+		"hit_1",
 	]
 	for anim_name in pausable_anims:
 		create_pausable_animation(anim_name)
@@ -122,43 +128,16 @@ func _physics_process(delta):
 
 # player is in the air
 	if !is_on_floor():
+		aerial_combat()
+		
 		anim_tree.set("parameters/agc_trans/current", 0)
 		vertical_velocity -= gravity * delta
 		floor_just = false
 
-		if Input.is_action_just_pressed("attack") && attack_anim == -1:
-			anim_tree.set("parameters/air_hit1/active", true)
-			current_weapon = 1
-			$attack1_timer.start()
-			$attack_window.start()
-			$model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key.visible = true
-			$weapon_timer.start()
-				
-			vertical_velocity = 9
-			velocity = direction * 25
-			
-		if Input.is_action_just_pressed("attack") && attack_anim == 0 && $attack_window.time_left > 0 && $attack1_timer.time_left == 0:
-			anim_tree.set("parameters/air_hit2/active", true)
-			current_weapon = 1
-			$attack2_timer.start()
-			$attack_window.start()
-			$weapon_timer.start()
-			
-			vertical_velocity = 9
-			velocity = direction * 25
-			
-		if Input.is_action_just_pressed("attack") && attack_anim == 1 && $attack_window.time_left > 0 && $attack2_timer.time_left == 0:
-			anim_tree.set("parameters/air_hit3/active", true)
-			current_weapon = 1
-			$attack_window.stop()
-			$attack3_timer.start()
-			$weapon_timer.start()
-			
-			vertical_velocity = 9
-			velocity = direction * 25
-
 # player is on the ground
 	else:
+		ground_combat()
+		
 		if vertical_velocity < -9:
 			if floor_just == false:
 				$AnimationTree.set("parameters/land/active",true)
@@ -167,34 +146,6 @@ func _physics_process(delta):
 		anim_tree.set("parameters/agc_trans/current", 1)
 		jump_num = 1
 		vertical_velocity = 0
-
-# combat ground code
-		if Input.is_action_just_pressed("attack") && attack_anim == -1:
-			anim_tree.set("parameters/hit1/active", true)
-			current_weapon = 1
-			$attack1_timer.start()
-			$attack_window.start()
-			$model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key.visible = true
-			$weapon_timer.start()
-			
-		if Input.is_action_just_pressed("attack") && attack_anim == 0 && $attack_window.time_left > 0 && $attack1_timer.time_left == 0:
-			anim_tree.set("parameters/hit2/active", true)
-			current_weapon = 1
-			$attack2_timer.start()
-			$attack_window.start()
-			$weapon_timer.start()
-			
-		if Input.is_action_just_pressed("attack") && attack_anim == 1 && $attack_window.time_left > 0 && $attack2_timer.time_left == 0:
-			anim_tree.set("parameters/hit3/active", true)
-			current_weapon = 1
-			$attack_window.stop()
-			$attack3_timer.start()
-			$weapon_timer.start()
-
-		if current_weapon == 1:
-			if Input.is_action_just_pressed("block"):
-				anim_tree.set("parameters/block/active", true)
-				$weapon_timer.start()
 
 # run/sprint blending
 	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(direction.x, direction.z) - rotation.y, delta * angular_acceleration)
@@ -221,15 +172,108 @@ func _physics_process(delta):
 # check current weapon
 	check_weapon_states(delta)
 
-func root_motion_velocity(delta):
+func ground_combat():
+# combat ground code
+	if Input.is_action_just_pressed("attack") && attack_anim == -1 && $attack_window.time_left == 0:
+		anim_tree.set("parameters/hit1/active", true)
+		current_weapon = 1
+		$attack1_timer.start()
+		$attack_window.start()
+		$model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key.visible = true
+		$weapon_timer.start()
+
+	if Input.is_action_just_pressed("attack") && attack_anim == 0 && $attack_window.time_left > 0 && $attack1_timer.time_left == 0:
+		anim_tree.set("parameters/hit2/active", true)
+		current_weapon = 1
+		$attack2_timer.start()
+		$attack_window.start()
+		$weapon_timer.start()
+
+	if Input.is_action_just_pressed("attack") && attack_anim == 1 && $attack_window.time_left > 0 && $attack2_timer.time_left == 0:
+		anim_tree.set("parameters/hit3/active", true)
+		current_weapon = 1
+		$attack_window.stop()
+		$attack3_timer.start()
+		$weapon_timer.start()
+
+	if current_weapon == 1:
+		if Input.is_action_just_pressed("block"):
+			anim_tree.set("parameters/block/active", true)
+			$weapon_timer.start()
+
+func aerial_combat():
+	if Input.is_action_just_pressed("attack") && attack_anim == -1:
+		anim_tree.set("parameters/air_hit1/active", true)
+		current_weapon = 1
+		$attack1_timer.start()
+		$attack_window.start()
+		$model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key.visible = true
+		$weapon_timer.start()
+				
+		vertical_velocity = 9
+		velocity = direction * 25
+		
+	if Input.is_action_just_pressed("attack") && attack_anim == 0 && $attack_window.time_left > 0 && $attack1_timer.time_left == 0:
+		anim_tree.set("parameters/air_hit2/active", true)
+		current_weapon = 1
+		$attack2_timer.start()
+		$attack_window.start()
+		$weapon_timer.start()
+		
+		vertical_velocity = 9
+		velocity = direction * 25
+		
+	if Input.is_action_just_pressed("attack") && attack_anim == 1 && $attack_window.time_left > 0 && $attack2_timer.time_left == 0:
+		anim_tree.set("parameters/air_hit3/active", true)
+		current_weapon = 1
+		$attack_window.stop()
+		$attack3_timer.start()
+		$weapon_timer.start()
+		
+		vertical_velocity = 9
+		velocity = direction * 25
+
+# called when we collect a coin
+func give_gold (amount):
+	$sfx/pickup_sound.play()
+	ra += amount
 	
-	### Root Motion Rotation ###
+	# update the UI
+	$CanvasLayer/UI.update_gold_text(ra)
+
+# called when an enemy deals damage to us
+func take_damage (damageToTake):	
+	curHp -= damageToTake
+	
+	anim_tree.set("parameters/damage_1/active", true)
+	
+	velocity = direction * -30
+	
+	# update the UI
+	$CanvasLayer/UI.update_health_bar(curHp, maxHp)
+	
+	# if our health is 0, die
+	if curHp <= 0:
+		die()
+
+# called when our health reaches 0
+func die ():	
+	# reload the scene
+	anim_tree.set("parameters/die/active", true)
+	
+	vertical_velocity = 11
+	velocity = direction * -60
+
+#	get_tree().reload_current_scene()
+
+func root_motion_velocity(delta):
+# Root Motion Rotation
 	var position_matrix = mesh.global_transform
 	position_matrix.origin = Vector3.ZERO
 	
 	position_matrix *= root_motion
 	
-	### Root Motion Translation ###
+# Root Motion Translation
 	var root_motion_displ = position_matrix.origin / delta
 	
 	root_vel.x = root_motion_displ.x
@@ -283,3 +327,7 @@ func _on_attack3_timer_timeout():
 	attack_anim = -1
 	canPressAttack = true
 	isAttacking = false
+
+func _on_hurtbox_body_entered(body):
+	if body.is_in_group("ENEMY"):
+		body.take_damage(1)

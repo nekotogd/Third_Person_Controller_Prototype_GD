@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/GemRed.obj-f9aafaad7ef3ca8d53ba0bb238ea10c5.mesh"
+
+[deps]
+
+files=[ "res://.import/GemRed.obj-f9aafaad7ef3ca8d53ba0bb238ea10c5.mesh" ]
+
+source_file="res://misc/collectables/GemRed.obj"
+dest_files=[ "res://.import/GemRed.obj-f9aafaad7ef3ca8d53ba0bb238ea10c5.mesh", "res://.import/GemRed.obj-f9aafaad7ef3ca8d53ba0bb238ea10c5.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

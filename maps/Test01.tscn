@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://maps/Test01/TerrSS01.png" type="Texture" id=2]
@@ -23,10 +23,11 @@
 [ext_resource path="res://maps/Test01/TerrSS03.png" type="Texture" id=21]
 [ext_resource path="res://maps/Test01/TerrSS07.png" type="Texture" id=22]
 [ext_resource path="res://maps/Test01/TerrSS16.png" type="Texture" id=23]
-[ext_resource path="res://sounds/ost/Kingdom Hearts 1.5 HD ReMix -Destiny Islands- Extended.mp3" type="AudioStream" id=24]
+[ext_resource path="res://enemies/enemy.tscn" type="PackedScene" id=24]
 [ext_resource path="res://addons/cloud/Cloud.gd" type="Script" id=25]
 [ext_resource path="res://addons/cloud/CageMesh.tres" type="ArrayMesh" id=26]
 [ext_resource path="res://addons/cloud/Cloud.shader" type="Shader" id=27]
+[ext_resource path="res://misc/collectables/ra.tscn" type="PackedScene" id=28]
 
 [sub_resource type="ProceduralSky" id=30]
 sky_top_color = Color( 0, 0.741176, 1, 1 )
@@ -750,6 +751,35 @@ cloud_min_density_high = 0.45
 auto_follow_camera = false
 cloud_shadow_enabled = false
 
+[node name="collectables" type="Node" parent="."]
+
+[node name="ra" parent="collectables" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00513, 0.449571, -6.90316 )
+
+[node name="ra2" parent="collectables" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00513, 0.449571, -4.652 )
+
+[node name="ra3" parent="collectables" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00513, 0.449571, -2.35508 )
+
+[node name="ra4" parent="collectables" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00513, 9.57743, 17.0401 )
+
+[node name="ra5" parent="collectables" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51293, 4.41896, -7.96518 )
+
+[node name="ra6" parent="collectables" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.19889, 4.41896, -7.96518 )
+
+[node name="ra7" parent="collectables" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.71879, 4.41896, -7.96518 )
+
+[node name="ra9" parent="collectables" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3979, 4.41896, -7.96518 )
+
+[node name="ra10" parent="collectables" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0226, 4.41896, -7.96518 )
+
 [node name="mesh" type="Spatial" parent="."]
 
 [node name="Terrain Test Map" type="MeshInstance" parent="mesh"]
@@ -850,18 +880,32 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="props/RigidBody3"]
 shape = SubResource( 36 )
 
+[node name="targets" type="Spatial" parent="."]
+
+[node name="Enemy" parent="targets" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9834, -1.75719, -2.93017 )
+
 [node name="Player_Body" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6625, 0, -5.3873 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6625, 0, -9.8325 )
 
 [node name="Skeleton" parent="Player_Body/model/P_EX120outao" index="0"]
 bones/189/bound_children = [ NodePath("BoneAttachment") ]
 
 [node name="BoneAttachment" parent="Player_Body/model/P_EX120outao/Skeleton" index="1"]
-transform = Transform( -0.534375, -0.327058, 0.779405, 0.146663, -0.943997, -0.295568, 0.832427, -0.0436334, 0.552414, -0.283652, 0.803593, -0.120879 )
+transform = Transform( -0.544961, -0.327458, 0.771871, 0.154895, -0.944057, -0.291145, 0.824031, -0.0391025, 0.565194, -0.28002, 0.802945, -0.117392 )
 
-[node name="ost" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 24 )
-volume_db = -25.0
-autoplay = true
+[node name="AnimationTree" parent="Player_Body" index="3"]
+"parameters/TimeScale 19/scale" = 1.0
+"parameters/TimeScale 20/scale" = 1.0
+
+[connection signal="body_entered" from="collectables/ra" to="collectables/ra" method="_on_ra_body_entered"]
+[connection signal="body_entered" from="collectables/ra2" to="collectables/ra2" method="_on_ra_body_entered"]
+[connection signal="body_entered" from="collectables/ra3" to="collectables/ra3" method="_on_ra_body_entered"]
+[connection signal="body_entered" from="collectables/ra4" to="collectables/ra4" method="_on_ra_body_entered"]
+[connection signal="body_entered" from="collectables/ra5" to="collectables/ra5" method="_on_ra_body_entered"]
+[connection signal="body_entered" from="collectables/ra6" to="collectables/ra6" method="_on_ra_body_entered"]
+[connection signal="body_entered" from="collectables/ra7" to="collectables/ra7" method="_on_ra_body_entered"]
+[connection signal="body_entered" from="collectables/ra9" to="collectables/ra9" method="_on_ra_body_entered"]
+[connection signal="body_entered" from="collectables/ra10" to="collectables/ra10" method="_on_ra_body_entered"]
 
 [editable path="Player_Body"]

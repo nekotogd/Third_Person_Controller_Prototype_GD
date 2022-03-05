@@ -11,5 +11,7 @@ noise = SubResource( 1 )
 flags_transparent = true
 flags_unshaded = true
 vertex_color_use_as_albedo = true
+params_diffuse_mode = 2
+params_specular_mode = 3
 params_cull_mode = 2
 albedo_texture = SubResource( 2 )
