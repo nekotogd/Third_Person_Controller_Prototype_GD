@@ -906,8 +906,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9834, -1.75719, -35.0237 )
 [node name="Player_Body" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6625, 0, -9.8325 )
 
+[node name="Skeleton" parent="Player_Body/model/P_EX120outao" index="0"]
+bones/189/bound_children = [ NodePath("BoneAttachment") ]
+
 [node name="BoneAttachment" parent="Player_Body/model/P_EX120outao/Skeleton" index="1"]
-transform = Transform( -0.557504, -0.348749, 0.753366, 0.192008, -0.937044, -0.291687, 0.807666, -0.0179627, 0.589366, -0.280723, 0.80443, -0.115742 )
+transform = Transform( -0.541086, -0.325239, 0.775527, 0.148463, -0.944646, -0.292581, 0.827761, -0.0431731, 0.559418, -0.280959, 0.803084, -0.118688 )
 
 [connection signal="body_entered" from="collectables/ra" to="collectables/ra" method="_on_ra_body_entered"]
 [connection signal="body_entered" from="collectables/ra2" to="collectables/ra2" method="_on_ra_body_entered"]
