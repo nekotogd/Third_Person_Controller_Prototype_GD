@@ -885,18 +885,29 @@ shape = SubResource( 36 )
 [node name="Enemy" parent="targets" instance=ExtResource( 24 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9834, -1.75719, -2.93017 )
 
+[node name="Enemy2" parent="targets" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9834, -1.75719, -8.51406 )
+
+[node name="Enemy3" parent="targets" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9834, -1.75719, -13.8882 )
+
+[node name="Enemy4" parent="targets" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9834, -1.75719, -19.1414 )
+
+[node name="Enemy5" parent="targets" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9834, -1.75719, -24.1745 )
+
+[node name="Enemy6" parent="targets" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9834, -1.75719, -29.0747 )
+
+[node name="Enemy7" parent="targets" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9834, -1.75719, -35.0237 )
+
 [node name="Player_Body" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6625, 0, -9.8325 )
 
-[node name="Skeleton" parent="Player_Body/model/P_EX120outao" index="0"]
-bones/189/bound_children = [ NodePath("BoneAttachment") ]
-
 [node name="BoneAttachment" parent="Player_Body/model/P_EX120outao/Skeleton" index="1"]
-transform = Transform( -0.544961, -0.327458, 0.771871, 0.154895, -0.944057, -0.291145, 0.824031, -0.0391025, 0.565194, -0.28002, 0.802945, -0.117392 )
-
-[node name="AnimationTree" parent="Player_Body" index="3"]
-"parameters/TimeScale 19/scale" = 1.0
-"parameters/TimeScale 20/scale" = 1.0
+transform = Transform( -0.557504, -0.348749, 0.753366, 0.192008, -0.937044, -0.291687, 0.807666, -0.0179627, 0.589366, -0.280723, 0.80443, -0.115742 )
 
 [connection signal="body_entered" from="collectables/ra" to="collectables/ra" method="_on_ra_body_entered"]
 [connection signal="body_entered" from="collectables/ra2" to="collectables/ra2" method="_on_ra_body_entered"]

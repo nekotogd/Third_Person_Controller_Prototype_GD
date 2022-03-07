@@ -24,7 +24,7 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "drop"
-length = 0.7
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("RaText:rect_position")
 tracks/0/interp = 2
@@ -68,6 +68,7 @@ custom_fonts/font = SubResource( 3 )
 text = "x 0"
 
 [node name="gem_texture" type="TextureRect" parent="RaText"]
+self_modulate = Color( 0.698039, 0, 1, 1 )
 margin_left = -98.0
 margin_top = -10.0
 margin_right = -18.0
