@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.0256982
+
+[sub_resource type="SphereMesh" id=2]
+radius = 0.03
+height = 0.06
+
+[node name="ChainLoop" type="RigidBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null

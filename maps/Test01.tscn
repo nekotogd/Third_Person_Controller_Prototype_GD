@@ -907,10 +907,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9834, -1.75719, -35.0237 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6625, 0, -9.8325 )
 
 [node name="Skeleton" parent="Player_Body/model/P_EX120outao" index="0"]
-bones/189/bound_children = [ NodePath("BoneAttachment") ]
+bones/189/bound_children = [  ]
 
 [node name="BoneAttachment" parent="Player_Body/model/P_EX120outao/Skeleton" index="1"]
-transform = Transform( -0.541086, -0.325239, 0.775527, 0.148463, -0.944646, -0.292581, 0.827761, -0.0431731, 0.559418, -0.280959, 0.803084, -0.118688 )
+transform = Transform( -0.544813, -0.35909, 0.757779, 0.187443, -0.932958, -0.307337, 0.81734, -0.0253998, 0.575595, -0.288847, 0.808014, -0.12505 )
+
+[node name="Skeleton" parent="Player_Body/model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key/kbao" index="0"]
+bones/3/bound_children = [  ]
 
 [connection signal="body_entered" from="collectables/ra" to="collectables/ra" method="_on_ra_body_entered"]
 [connection signal="body_entered" from="collectables/ra2" to="collectables/ra2" method="_on_ra_body_entered"]
