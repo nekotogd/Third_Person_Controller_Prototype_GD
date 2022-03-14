@@ -906,14 +906,35 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9834, -1.75719, -35.0237 )
 [node name="Player_Body" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6625, 0, -9.8325 )
 
-[node name="Skeleton" parent="Player_Body/model/P_EX120outao" index="0"]
-bones/189/bound_children = [  ]
-
 [node name="BoneAttachment" parent="Player_Body/model/P_EX120outao/Skeleton" index="1"]
-transform = Transform( -0.544813, -0.35909, 0.757779, 0.187443, -0.932958, -0.307337, 0.81734, -0.0253998, 0.575595, -0.288847, 0.808014, -0.12505 )
+transform = Transform( -0.554966, -0.366382, 0.746842, 0.208417, -0.930391, -0.301554, 0.805342, -0.0116966, 0.592695, -0.284862, 0.807732, -0.119989 )
 
-[node name="Skeleton" parent="Player_Body/model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key/kbao" index="0"]
-bones/3/bound_children = [  ]
+[node name="Jigglebone" parent="Player_Body/model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key/kbao/Skeleton" index="1"]
+transform = Transform( 0.148921, 0.988838, 0.00456324, -0.986974, 0.148921, -0.0608689, -0.0608691, 0.00456086, 0.998135, 0.922354, -0.147276, -0.40062 )
+
+[node name="Jigglebone2" parent="Player_Body/model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key/kbao/Skeleton" index="2"]
+transform = Transform( 0.279641, 0.959964, 0.0164276, -0.953243, 0.279644, -0.114577, -0.114584, 0.016381, 0.993279, 0.931681, -0.213619, -0.406379 )
+
+[node name="Jigglebone3" parent="Player_Body/model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key/kbao/Skeleton" index="3"]
+transform = Transform( 0.392277, 0.919248, 0.0331998, -0.905648, 0.392287, -0.160975, -0.161, 0.0330795, 0.9864, 0.939611, -0.241733, -0.410564 )
+
+[node name="Jigglebone4" parent="Player_Body/model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key/kbao/Skeleton" index="4"]
+transform = Transform( 0.48793, 0.871272, 0.0530065, -0.849537, 0.487954, -0.200468, -0.200527, 0.0527833, 0.978265, 0.950738, -0.268064, -0.41592 )
+
+[node name="Jigglebone5" parent="Player_Body/model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key/kbao/Skeleton" index="5"]
+transform = Transform( 0.568227, 0.819498, 0.0744399, -0.788949, 0.568275, -0.233717, -0.233833, 0.0740748, 0.969451, 0.965626, -0.294603, -0.422953 )
+
+[node name="Jigglebone6" parent="Player_Body/model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key/kbao/Skeleton" index="6"]
+transform = Transform( 0.635029, 0.766442, 0.0964579, -0.726827, 0.635111, -0.261451, -0.261649, 0.0959209, 0.960385, 0.982287, -0.31815, -0.430574 )
+
+[node name="Jigglebone7" parent="Player_Body/model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key/kbao/Skeleton" index="7"]
+transform = Transform( 0.690192, 0.713886, 0.118331, -0.665253, 0.690318, -0.284425, -0.284734, 0.117588, 0.951367, 1.00208, -0.341209, -0.439562 )
+
+[node name="Jigglebone8" parent="Player_Body/model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key/kbao/Skeleton" index="8"]
+transform = Transform( 0.735473, 0.663028, 0.139547, -0.605639, 0.735655, -0.303336, -0.303779, 0.13858, 0.94261, 1.02257, -0.361232, -0.448639 )
+
+[node name="Jigglebone9" parent="Player_Body/model/P_EX120outao/Skeleton/BoneAttachment/kingdom_key/kbao/Skeleton" index="9"]
+transform = Transform( 0.77245, 0.614646, 0.159784, -0.548894, 0.772699, -0.318828, -0.319431, 0.158574, 0.934247, 1.04633, -0.381084, -0.459112 )
 
 [connection signal="body_entered" from="collectables/ra" to="collectables/ra" method="_on_ra_body_entered"]
 [connection signal="body_entered" from="collectables/ra2" to="collectables/ra2" method="_on_ra_body_entered"]
