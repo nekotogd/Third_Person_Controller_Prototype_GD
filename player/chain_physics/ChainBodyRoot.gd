@@ -3,12 +3,17 @@ extends Spatial
 const LOOP = preload("res://player/chain_physics/ChainLoop.tscn")
 const LINK = preload("res://player/chain_physics/ChainLink.tscn")
 
-export(int) var loops := 8
 export(float) var separation : float = 0.06
+export(int) var start_bone_idx : int = 3
+export(int) var end_bone_idx : int = 11
+
+var loops : int = 1 # Changed at runtime automatically
 
 onready var skeleton = get_parent()
 
 func _ready():
+	loops = end_bone_idx - start_bone_idx
+	
 	var parent = $Anchor
 	for i in range(loops):
 		var child = add_loop(parent)
@@ -23,8 +28,8 @@ func _physics_process(_delta):
 		return
 	
 	# Set bone transforms
-	for i in range(3, 11 + 1):
-		var node_idx : int = i - 3
+	for i in range(start_bone_idx, end_bone_idx + 1):
+		var node_idx : int = i - start_bone_idx
 		var node_name = "ChainLoop" + str(node_idx)
 		
 		if node_idx == 0:
