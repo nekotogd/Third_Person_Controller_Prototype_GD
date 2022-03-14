@@ -6,4 +6,4 @@ Everybody willing to contribute to this project is free to! If you want to add o
 
 We will not be making any profit off of this prototype. It can be used as a base for myself and others to make their own third person action games using Godot, provided you use your own assets.
 
-Join the [Discord server](discord.gg/snnCQSmJcr)!
+Join the [Discord server](https://discord.gg/snnCQSmJcr)!
