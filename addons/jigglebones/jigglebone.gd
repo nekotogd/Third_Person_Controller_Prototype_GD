@@ -112,7 +112,7 @@ func _physics_process(delta) -> void:
 	var bone_rotate_axis_obj: Vector3 = bone_transf_obj.basis.xform(bone_rotate_axis).normalized()
 	var bone_new_transf_obj: Transform = Transform(bone_transf_obj.basis.rotated(bone_rotate_axis_obj, bone_rotate_angle), bone_transf_obj.origin)
 
-	skeleton.set_bone_global_pose_override(bone_id, bone_new_transf_obj, 0.89, true)
+	skeleton.set_bone_global_pose_override(bone_id, bone_new_transf_obj, 0.68, true)
 
 	# Orient this object to the jigglebone
 	global_transform.basis = (skeleton.global_transform * skeleton.get_bone_global_pose(bone_id)).basis
