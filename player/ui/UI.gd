@@ -10,8 +10,4 @@ func update_health_bar (curHp, maxHp):
 # called when our gold changes
 func update_gold_text (ra):
 	raText.text = "x " + str(ra)
-	$AnimationPlayer.play("drop")
-	$gem_timer.start()
 
-func _on_gem_timer_timeout():
-	$AnimationPlayer.play_backwards("drop")
